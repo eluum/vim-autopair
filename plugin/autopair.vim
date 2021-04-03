@@ -8,7 +8,7 @@ inoremap <silent>[ []<esc>:call HandlePair(1, "[")<CR>
 inoremap <silent>{ {}<esc>:call HandlePair(1, "{")<CR>
 
 " special handling for autocomplete pairs by yours truly
-function! HandlePair(enter, key)
+function! HandlePair(enter, key) abort
     " handle the next key press
     let nextChar = nr2char(getchar())
     if nextChar == "\<CR>" && a:enter
