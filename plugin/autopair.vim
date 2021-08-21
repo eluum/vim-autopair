@@ -7,6 +7,16 @@ inoremap <silent>( ()<esc>:call HandlePair(1, "(")<CR>
 inoremap <silent>[ []<esc>:call HandlePair(1, "[")<CR>
 inoremap <silent>{ {}<esc>:call HandlePair(1, "{")<CR>
 
+" in visual mode surround text with paired characters
+vnoremap <silent>" <esc>:call SurroundText("\"", "\"")<CR>
+vnoremap <silent>' <esc>:call SurroundText("\'", "\'")<CR>
+vnoremap <silent>( <esc>:call SurroundText("(", ")")<CR>
+vnoremap <silent>[ <esc>:call SurroundText("[", "]")<CR>
+vnoremap <silent>{ <esc>:call SurroundText("{", "}")<CR>
+vnoremap <silent>) <esc>:call SurroundText("(", ")")<CR>
+vnoremap <silent>] <esc>:call SurroundText("[", "]")<CR>
+vnoremap <silent>} <esc>:call SurroundText("{", "}")<CR>
+
 " special handling for autocomplete pairs by yours truly
 function! HandlePair(enter, key) abort
     " handle the next key press
@@ -29,4 +39,19 @@ function! HandlePair(enter, key) abort
         :startinsert
         :call feedkeys(nextChar)
     endif 
+endfunction
+
+function! SurroundText(key, pair) abort
+    let start      = getpos("'<")
+    let end        = getpos("'>")
+    
+    :let @t = a:key
+    :call cursor(start[1],start[2])
+    if start[2] == 1 
+        :normal ^
+    endif
+    :normal "tP
+    :let @t = a:pair
+    :call cursor(end[1],end[2]+1)
+    :normal "tp
 endfunction
