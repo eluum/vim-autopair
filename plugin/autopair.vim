@@ -8,7 +8,7 @@ inoremap <silent>[ []<esc>:call HandlePair(1, "[")<CR>
 inoremap <silent>{ {}<esc>:call HandlePair(1, "{")<CR>
 
 " in visual mode surround text with paired characters
-vnoremap <silent>" <esc>:call SurroundText("\"", "\"")<CR>
+vnoremap <silent><Space>" <esc>:call SurroundText("\"", "\"")<CR>
 vnoremap <silent>' <esc>:call SurroundText("\'", "\'")<CR>
 vnoremap <silent>( <esc>:call SurroundText("(", ")")<CR>
 vnoremap <silent>[ <esc>:call SurroundText("[", "]")<CR>
