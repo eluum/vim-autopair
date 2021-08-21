@@ -5,3 +5,5 @@ Press tab after any autocomplete pair to cancel and only write the single charac
 
 Pressing ; after any pair will skip to the end of the line and place a semicolon. Pressing 
 { after ( will skip to the end of the parentheses and add a bracket pair.
+
+Pressing any pair key in visual mode will surround the selected text with that key.
