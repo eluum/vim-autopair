@@ -14,7 +14,11 @@ function! HandlePair(enter, key) abort
     if nextChar == "\<CR>" && a:enter
         :call feedkeys("i\<CR>\<esc>O")        
     elseif nextChar == "\<tab>"
-        :call feedkeys("xi")
+        if col(".") == col("$") - 1
+            :call feedkeys("xa")
+        else
+            :call feedkeys("xi")
+        endif
     elseif nextChar == ";"
         :call feedkeys("A;")
     elseif nextChar == "{" && a:key == "("
